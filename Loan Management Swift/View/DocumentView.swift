@@ -10,9 +10,7 @@ import SwiftUI
 import SwiftUI
 
 struct DocumentView: View {
-    
     let url: String
-    
     @State var scale = 1.0
     @State var lastScale = 1.0
     @State var offset: CGSize = .zero
@@ -70,7 +68,6 @@ struct DocumentView: View {
         
         return newOffset
     }
-    
     
     var body: some View {
         GeometryReader{ geometry in

@@ -10,6 +10,10 @@ import SwiftUI
 struct LoanListView: View {
     @EnvironmentObject var router: Router
     @StateObject var vm = LoanListViewModel()
+    var sortStrings = ["Semua", "Nama", "Jumlah", "Jangka Waktu"]
+    @State  var selectedSort = "Semua"
+    
+    
     var body: some View {
         ScrollView{
             VStack (alignment: .leading, spacing: 0){
@@ -23,33 +27,53 @@ struct LoanListView: View {
         .onAppear{
             vm.getLoans()
         }
+        .alert(vm.errorMessage, isPresented: $vm.showAlert) {
+            Button("OK", role: .cancel) {
+                vm.dismissAlert()
+            }
+        }
     }
 }
 
 extension LoanListView {
+    
     var title : some View {
         HStack{
             Text("List Peminjam")
                 .font(.system(size: 32))
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Button{
-                print("filter")
-            }label:{
-                Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.blue)
-            }
             
+            
+            Menu {
+                ForEach(vm.sortStrings, id: \.self) {sortBy in
+                    Button{
+                        vm.selectedSort = sortBy
+                        vm.filterLoans()
+                    }label: {
+                        HStack{
+                            Text(sortBy)
+                            if vm.selectedSort == sortBy {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                    .foregroundColor(.black)
+                        
+                }
+            } label: {
+                Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.blue)
+            }
         }.frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading)
         
     }
     
     var loanlist: some View {
-        
         VStack{
             if vm.isLoading {
                 VStack{
@@ -61,14 +85,10 @@ extension LoanListView {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
-            }else if vm.loans.isEmpty{
-                VStack{
-                    Spacer()
-                    Text("Tidak terdapat list pinjaman")
-                    Spacer()
-                }
+            }else if vm.filteredLoans.isEmpty{
+                ContentUnavailableView(LMError.noData.rawValue, systemImage: "doc.richtext.fill")
             }else {
-                ForEach(vm.loans, id: \.id){ loan in
+                ForEach(vm.filteredLoans, id: \.id){ loan in
                     LMLoanCard(loan: loan)
                         .padding(.top, loan != vm.loans.first ? 10 : 0)
                         .onTapGesture {
@@ -84,5 +104,3 @@ extension LoanListView {
         
     }
 }
-
-

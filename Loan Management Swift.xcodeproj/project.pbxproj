@@ -193,7 +193,6 @@
 				A1AE14762C295BF4007761E3 /* Extensions */,
 				A1AE14732C295669007761E3 /* Mapper */,
 				A1AE14612C2943F9007761E3 /* Enum */,
-				A1AE147F2C29A7BB007761E3 /* Endpoints.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -201,6 +200,7 @@
 		A1AE14612C2943F9007761E3 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				A1AE147F2C29A7BB007761E3 /* Endpoints.swift */,
 				A1AE14622C294401007761E3 /* LMError.swift */,
 			);
 			path = Enum;

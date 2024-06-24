@@ -12,4 +12,6 @@ enum LMError: String, Error{
     case unableToComplete = "Unable to complete your request, please check your internet connection"
     case invalidResponse = "Invalid response from the server. Please try again."
     case invalidData = "The data received from the server is invalid"
+    case noData = "There are no data availables"
+    case noDocument = "There are no document availables"
 }

@@ -88,9 +88,18 @@ extension DetailView{
     var documentSection: some View {
         VStack(alignment: .leading){
             LMTitleLabel("Dokumen")
-            ForEach(loan.documents ?? [], id: \.id){ document in
-                LMDocumentCard(document: document)
+            
+            if let documents = loan.documents {
+                if documents.isEmpty {
+                    ContentUnavailableView(LMError.noDocument.rawValue, systemImage: "doc.richtext.fill")
+                }else {
+                    ForEach(loan.documents!, id: \.id){ document in
+                        LMDocumentCard(document: document)
+                    }
+                }
             }
+            
+            
         }
         .padding()
     }

@@ -15,6 +15,7 @@ enum API: String {
 protocol Endpoint {
     var url: String {get}
 }
+
 enum Endpoints {
     enum Gets: Endpoint {
         case getLoans
