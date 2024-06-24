@@ -14,7 +14,7 @@ To run the project:
 - I started by carefully reading the provided task requirements.
 - Next, I checked the JSON output from the given API endpoint.
 - I began the project by structuring the necessary models.
-- Then, I designed the UI on paper before implementing it in code.
+- Then, I created rough sketches of the UI on paper before translating them into code."
 
 ## Decision
 For this mini project, I chose not to use any additional Swift libraries. This decision was made to allow evaluators to better assess my fundamental Swift skills.
