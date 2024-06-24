@@ -71,7 +71,6 @@ class LoanListViewModel: ObservableObject {
                 filteredLoans = loans.sorted { $0.riskRating < $1.riskRating }
             default:
                 filteredLoans = loans
-        
         }
     }
 }

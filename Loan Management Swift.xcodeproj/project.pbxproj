@@ -101,6 +101,7 @@
 		A1AE142A2C2934A6007761E3 /* Loan Management Swift */ = {
 			isa = PBXGroup;
 			children = (
+				A1AE14852C29BFB4007761E3 /* Supports */,
 				A1AE14602C2943F3007761E3 /* Utilities */,
 				A1AE145D2C2943D3007761E3 /* Manager */,
 				A1AE144F2C29383B007761E3 /* App */,
@@ -108,7 +109,6 @@
 				A1AE143D2C293591007761E3 /* View */,
 				A1AE143C2C29358E007761E3 /* Model */,
 				A1AE14392C293544007761E3 /* Navigation */,
-				A1AE142F2C2934A8007761E3 /* Assets.xcassets */,
 				A1AE14312C2934A8007761E3 /* Preview Content */,
 			);
 			path = "Loan Management Swift";
@@ -244,6 +244,14 @@
 				A1AE14772C295BFE007761E3 /* String+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A1AE14852C29BFB4007761E3 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				A1AE142F2C2934A8007761E3 /* Assets.xcassets */,
+			);
+			path = Supports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
