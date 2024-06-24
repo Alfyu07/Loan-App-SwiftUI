@@ -35,6 +35,7 @@
 		A1AE14782C295BFE007761E3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE14772C295BFE007761E3 /* String+Ext.swift */; };
 		A1AE147A2C295DF1007761E3 /* LMRepaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE14792C295DF1007761E3 /* LMRepaymentCard.swift */; };
 		A1AE147C2C299298007761E3 /* LMDocumentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE147B2C299298007761E3 /* LMDocumentCard.swift */; };
+		A1AE14802C29A7BB007761E3 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE147F2C29A7BB007761E3 /* Endpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		A1AE14772C295BFE007761E3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		A1AE14792C295DF1007761E3 /* LMRepaymentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMRepaymentCard.swift; sourceTree = "<group>"; };
 		A1AE147B2C299298007761E3 /* LMDocumentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMDocumentCard.swift; sourceTree = "<group>"; };
+		A1AE147F2C29A7BB007761E3 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				A1AE14762C295BF4007761E3 /* Extensions */,
 				A1AE14732C295669007761E3 /* Mapper */,
 				A1AE14612C2943F9007761E3 /* Enum */,
+				A1AE147F2C29A7BB007761E3 /* Endpoints.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				A1AE147A2C295DF1007761E3 /* LMRepaymentCard.swift in Sources */,
 				A1AE143B2C29354E007761E3 /* Router.swift in Sources */,
 				A1AE142C2C2934A6007761E3 /* Loan_Management_SwiftApp.swift in Sources */,
+				A1AE14802C29A7BB007761E3 /* Endpoints.swift in Sources */,
 				A1AE144A2C293705007761E3 /* DocumentResponse.swift in Sources */,
 				A1AE145C2C294367007761E3 /* LMCalloutLabel.swift in Sources */,
 				A1AE14632C294401007761E3 /* LMError.swift in Sources */,

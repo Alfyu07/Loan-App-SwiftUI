@@ -12,7 +12,6 @@ import SwiftUI
 struct DocumentView: View {
     
     let url: String
-    let baseUrl: String = "https://raw.githubusercontent.com/andreascandle/p2p_json_test/main/"
     
     @State var scale = 1.0
     @State var lastScale = 1.0
@@ -71,12 +70,11 @@ struct DocumentView: View {
         
         return newOffset
     }
-
     
     
     var body: some View {
         GeometryReader{ geometry in
-            AsyncImage(url: URL(string: baseUrl + url)){ phase in
+            AsyncImage(url: URL(string: API.baseUrl.rawValue + url)){ phase in
                 switch phase {
                     case .success(let image):
                         image

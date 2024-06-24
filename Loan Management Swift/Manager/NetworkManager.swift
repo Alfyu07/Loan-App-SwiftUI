@@ -9,12 +9,12 @@ import Foundation
 
 struct NetworkManager {
     static let shared = NetworkManager()
-    let baseUrl = "https://raw.githubusercontent.com/andreascandle/p2p_json_test/main/api/"
+   
     
     private init() {}
     
     func getLoans(completed: @escaping(Result<[Loan], LMError>) -> Void){
-        let endpoint = baseUrl + "/json/loans.json"
+        let endpoint = Endpoints.Gets.getLoans.url
         
         guard let url = URL(string: endpoint) else {
             completed(.failure(.technicalIssue))
