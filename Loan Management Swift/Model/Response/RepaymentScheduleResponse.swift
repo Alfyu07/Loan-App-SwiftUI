@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct RepaymentSchedule: Codable, Hashable{
-    var installments: [Installment]?
+struct RepaymentScheduleResponse: Codable{
+    var installments: [InstallmentResponse]?
+    
 }
 
-struct Installment: Codable, Hashable{
+struct InstallmentResponse: Codable, Hashable{
     var dueDate: String
     var amountDue: Int
 }

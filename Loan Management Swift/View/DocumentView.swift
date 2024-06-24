@@ -7,18 +7,103 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct DocumentView: View {
-    let url: String
     
-    init(url: String) {
-        self.url = url
+    let url: String
+    let baseUrl: String = "https://raw.githubusercontent.com/andreascandle/p2p_json_test/main/"
+    
+    @State var scale = 1.0
+    @State var lastScale = 1.0
+    @State var offset: CGSize = .zero
+    @State var lastOffset: CGSize = .zero
+    private let minScale: CGFloat = 1.0
+    private let maxScale: CGFloat = 5.0
+    
+    var magnification : some Gesture{
+        MagnificationGesture()
+            .onChanged { state in
+               adjustScale(from: state)
+            }
+            .onEnded { state in
+                lastScale = 1.0
+                validateScaleLimits()
+            }
     }
+    
+    func adjustScale(from state: MagnificationGesture.Value){
+        let delta = state / lastScale
+        scale *= delta
+        lastScale = state
+    }
+    
+    func getMinimumScaleAllowed() -> CGFloat{
+        return max(scale, minScale)
+    }
+    
+    func getMaximumScaleAlllowed() -> CGFloat {
+        return min(scale, maxScale)
+    }
+    
+    func validateScaleLimits(){
+        scale = getMinimumScaleAllowed()
+        scale = getMaximumScaleAlllowed()
+    }
+    var dragGesture: some Gesture{
+        DragGesture(minimumDistance: 0)
+            .onChanged({ value in
+                withAnimation(.interactiveSpring()) {
+                    offset = handleOffsetChange(value.translation)
+                }
+            })
+            .onEnded({ _ in
+                lastOffset = offset
+            })
+    }
+    
+    
+    private func handleOffsetChange(_ offset: CGSize) -> CGSize {
+        var newOffset: CGSize = .zero
+        
+        newOffset.width = offset.width + lastOffset.width
+        newOffset.height = offset.height + lastOffset.height
+        
+        return newOffset
+    }
+
+    
     
     var body: some View {
-        Text("Document View")
+        GeometryReader{ geometry in
+            AsyncImage(url: URL(string: baseUrl + url)){ phase in
+                switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(scale)
+                            .offset(offset)
+                            .gesture(magnification.simultaneously(with: dragGesture))
+                    case .failure(_):
+                        Image(systemName: "ant.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(0.5)
+                            .foregroundColor(.teal)
+                            .opacity(0.6)
+                    case .empty:
+                        Image(systemName: "photo.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(0.5)
+                            .foregroundColor(.teal)
+                            .opacity(0.6)
+                    @unknown default:
+                        ProgressView()
+                }
+            }
+        }
+        
     }
-}
-
-#Preview {
-    DocumentView(url: "Test")
 }

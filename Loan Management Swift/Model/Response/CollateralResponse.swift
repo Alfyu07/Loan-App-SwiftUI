@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Collateral: Codable, Hashable{
+struct CollateralResponse: Codable{
     var type: String
     var value: Int
 }

@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Loan: Codable, Hashable{
+struct LoanResponse: Codable{
     var id: String
     var amount: Int
     var interestRate: Double
     var term: Int
     var purpose: String
     var riskRating: String
-    var borrower: Borrower
-    var collateral: Collateral
-    var documents: [Document]?
-    var repaymentSchedule: RepaymentSchedule
+    var borrower: BorrowerResponse
+    var collateral: CollateralResponse
+    var documents: [DocumentResponse]?
+    var repaymentSchedule: RepaymentScheduleResponse
 }

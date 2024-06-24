@@ -14,7 +14,7 @@ struct Loan_Management_SwiftApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.path) {
-                ContentView()
+                LoanListView()
                     .navigationDestination(for: Route.self) { route in
                         switch(route){
                             case .detailView(let loan):
@@ -24,6 +24,8 @@ struct Loan_Management_SwiftApp: App {
                         }
                     }
             }
+            .environmentObject(router)
         }
+        
     }
 }

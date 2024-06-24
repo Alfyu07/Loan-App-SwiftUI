@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Document: Codable, Hashable{
+struct DocumentResponse: Codable{
     var type: String
     var url: String
 }
